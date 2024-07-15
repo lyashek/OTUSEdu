@@ -1,0 +1,18 @@
+contexts:
+  solution-architecture:
+    title: Архитектура 'Заказ лома'
+    location: Архитектура 'Заказ лома'
+    extra-links: true
+    components:
+      - scrapsystem
+      - scrapsystem.*
+      - scrapsystem.*.*
+
+  platform:
+    title: Технологическая платформа
+    location: Технологическая платформа
+    extra-links: true
+    components:
+      - platform
+      - platform.*
+      - platform.*.*

@@ -1,0 +1,21 @@
+docs:
+  scrapsystem.scraporder.uc1:
+    type: markdown
+    location: Создание заказа
+    source: docs\uc1.md
+  scrapsystem.scraporder.uc2:
+    type: markdown
+    location: Получение информации об изменении в заказах
+    source: uc2.md
+  scrapsystem.scraporder.uc3:
+    type: markdown
+    location: Колобок/Песня для волка
+    source: uc3.md
+  scrapsystem.scraporder.uc4:
+    type: markdown
+    location: Колобок/Песня для медведя
+    source: uc4.md
+  scrapsystem.scraporder.uc4:
+    type: markdown
+    location: Колобок/Песня для лисы
+    source: uc5.md

@@ -1,0 +1,50 @@
+components:
+  platform.kafka:
+    title: platform-kafka
+    entity: component
+
+  platform.elk:
+    title: platform-prometheus
+    entity: component
+
+  scrapsystem.scraporder.backend:
+    title: scraporder-service-backend
+    entity: component
+    technologies:
+      - PostgreSQL
+    aspects:
+      - scraporder
+    links:
+      - id: scrapsystem.scraporder.db
+        direction: '<-->'
+        title: db
+
+  scrapsystem.scraporder.db:
+    title: scraporder-service-db
+    entity: component
+    technologies:
+      - Java
+    aspects:
+      - scraporder
+
+  scrapsystem.scrapstorage.backend:
+    title: scrapstorage-service-backend
+    entity: component
+    technologies:
+      - Java
+    aspects:
+      - scrapstorage
+    links:
+      - id: scrapsystem.scrapstorage.db
+        direction: '<-->'
+        title: db
+
+  scrapsystem.scrapstorage.db:
+    title: scrapstorage-service-db
+    entity: component
+    technologies: # Используемые технологии
+      - PostgreSQL
+    aspects:
+      - scrapstorage
+
+

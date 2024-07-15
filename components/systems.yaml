@@ -1,0 +1,8 @@
+components:
+  platform:
+    title: platform
+    entity: system
+
+  scrapsystem:
+    title: scrapsystem
+    entity: system
