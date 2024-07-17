@@ -1,0 +1,233 @@
+
+# Здесь можно подключить репозитории архитектуры
+imports:
+#  - https://dochub.info/documentation/root.yaml  # по прямой ссылке (попробуй раскомментировать и посмотри на результат)
+#  - foo.yaml                                     # или по относительному пути
+
+# Это аспекты. Аспекты - аналитические маркеры, позволяющие выделять
+# сегменты архитектуры. Кликни на лупе слева и посмотри как они помогают
+# найти то, что нужно.
+aspects:
+  auth:                       # Идентификатор аспекта
+    title: Авторизация         # Название
+    location: Авторизация     # Размещение в меню
+
+  conference:
+    title: Конференция
+    location: Конференция
+
+  conference.prep:
+    title: Конференция подготовка
+    location: Конференция/Подготовка
+
+  conference.exec:
+    title: Конференция проведение
+    location: Конференция/Проведение
+
+
+  conference.complete:
+    title: Конференция завершение
+    location: Конференция/Завершение
+
+
+# Архитектурные компоненты. Из них строится ИТ архитектура.
+components:
+
+  # Компоненты верхнего уровня (L1 C4Model)
+  customer: # Идентификатор компонента
+    title: Посетитель       # Название
+    entity: actor             # Представление на схеме
+    links: # Компоненты, с которыми происходит взаимодействие
+      - id: confmeet            # Идентификатор компонента
+        direction: <-->       # Направление взаимодействия (<-- | -- | --> | <-->)
+        title: Регистрация        # Смысл взаимодействия
+    aspects: # Аспекты, которые реализует компонент
+      - auth
+      - conference.exec
+
+  admin: # Идентификатор компонента
+    title: Администартор       # Название
+    entity: actor             # Представление на схеме
+    links: # Компоненты, с которыми происходит взаимодействие
+      - id: confmeet            # Идентификатор компонента
+        direction: <-->       # Направление взаимодействия (<-- | -- | --> | <-->)
+        title: Мониторинг        # Смысл взаимодействия
+
+  speaker:                       # Идентификатор компонента
+    title: Докладчик       # Название
+    entity: actor             # Представление на схеме
+    links:                    # Компоненты, с которыми происходит взаимодействие
+      - id: confmeet            # Идентификатор компонента
+        direction: <-->       # Направление взаимодействия (<-- | -- | --> | <-->)
+        title: Участие в конференции        # Смысл взаимодействия
+    aspects: # Аспекты, которые реализует компонент
+      - auth
+      - conference.exec
+
+  manager:                       # Идентификатор компонента
+    title: Организатор       # Название
+    entity: actor             # Представление на схеме
+    links:                    # Компоненты, с которыми происходит взаимодействие
+      - id: confmeet            # Идентификатор компонента
+        direction: <-->       # Направление взаимодействия (<-- | -- | --> | <-->)
+        title: Создание конференции       # Смысл взаимодействия
+    aspects: # Аспекты, которые реализует компонент
+      - auth
+      - conference.prep
+
+  confmeet:
+    title: Система проведения конференций
+    entity: collections
+    aspects:                  # Аспекты, которые реализует компонент
+      - auth
+      - conference
+
+  bank:
+    title: Банковская система
+    entity: collections
+    aspects:
+      - conference.complete
+
+  # Внутренняя архитектура компонентов верхнего уровня (L2 C4Model)
+  confmeet.gateway:             # Иерархия компонентов определяется структурой их идентификаторов
+    title: API шлюз
+    entity: component
+    links:
+      - id: confmeet.backend
+        title: Бизнес API
+        direction: <-->
+      - id: confmeet.auth
+        title: Auth API
+        direction: <-->
+    technologies:             # Технологии используемые в компоненте
+      - HTTP
+      - OAuth
+
+  confmeet.backend:
+    title: Бэкенд
+    entity: component
+    links:
+      - id: confmeet.paygate
+        direction: <-->
+    aspects:
+      - conference.complete
+      - conference.exec
+      - conference.prep
+    technologies:
+      - Java
+
+  confmeet.auth:
+    title: Авторизация
+    entity: component
+    aspects:
+      - auth
+    technologies:
+      - Java
+      - OAuth
+
+  confmeet.paygate:
+    title: Платежный шлюз
+    entity: component
+    links:
+      - id: bank
+        direction: <-->
+    technologies:
+      - Java
+
+
+  # Детальная архитектура бэкенда (L3 C4Model)
+  confmeet.backend.core:
+    title: Ядро
+    entity: component
+
+  confmeet.backend.log:
+    title: Подсистема логирования
+    entity: component
+
+  confmeet.backend.db:
+    title: Хранилище
+    entity: database
+    technologies:
+      - PostgreSQL
+
+
+
+# Диаграммы представлmений
+contexts:
+  overview:                   # Схема верхнего уровня представления (L1 C4Model)
+    title: Обзор              # Название диаграммы
+    location: Обзор          # Размещение диаграммы в меню
+    components:               # Компоненты, которые входят в диаграмму
+      - confmeet              # В данной диаграмме будет только один компонент
+      - admin
+      - customer
+      - manager
+      - speaker
+      - bank
+
+  system:                     # Архитектура системы (L2 C4Model)
+    title: Устройство системы
+    location: Система
+    components:
+      - confmeet.*              # Можно указать wildcard включаемых компонентов в диаграмму
+
+  system.backend:             # Архитектура бэкенда (L3 C4Model)
+    title: Устройство бэкенда
+    location: Система/Бэкенд
+    components:
+      - confmeet.backend.*
+#
+## Документы
+#docs:
+#  example:
+#    location: Пример документа  # Размещение в меню
+#    # Ссылка может быть как на внешний ресурс, так на файл по относительному пути
+#    source: https://dochub.info/documentation/docs/manual/docs/examples/example.yaml
+#    type: openapi               # Тип документа (OpenApi | Markdown | PlantUML | Table)
+#
+## Описание технологического стека
+#technologies:
+#  sections:                           # Определение разделов стека
+#    languages:                         # Идентификатор раздела
+#      title: Языки программирования   # Название раздела
+#    frameworks:
+#      title: Фреймворки
+#    databases:
+#      title: Базы данных
+#    storages:
+#      title: Хранилища
+#    protocols:
+#      title: Протоколы
+#  items:                              # Перечисление технологий
+#    PHP:                              # Идентификатор технологии
+#      aliases:                        # Синонимы технологии
+#        - пыха
+#      title: Супер-крутой язык программирования   # Название технологии
+#      link: https://www.php.net/                  # Ссылка на документацию
+#      section: languages              # Идентификатор секции технологии
+#      status: adopt                   # Статус технологии adopt / trial / assess / hold
+#    Go:
+#      title: Go
+#      link: https://go.dev/
+#      section: languages
+#      status: trial
+#    Laravel:
+#      title: Laravel
+#      link: https://laravel.ru/
+#      section: frameworks
+#      status: trial
+#    PostgreSQL:
+#      title: PostgreSQL
+#      link: https://www.postgresql.org/
+#      section: databases
+#      status: assess
+#    HTTP:
+#      title: HTTP
+#      link: https://ru.wikipedia.org/wiki/HTTP
+#      section: protocols
+#      status: adopt
+#    OAuth:
+#      title: OAuth
+#      link: https://ru.wikipedia.org/wiki/OAuth
+#      section: protocols
+#      status: adopt
