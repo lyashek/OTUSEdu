@@ -1,0 +1,62 @@
+# Внутренняя архитектура компонентов верхнего уровня (L2 C4Model)
+components:
+  confmeet.gateway:             # Иерархия компонентов определяется структурой их идентификаторов
+    title: API шлюз
+    entity: component
+    links:
+      - id: confmeet.backend
+        title: Бизнес API
+        direction: <-->
+      - id: confmeet.auth
+        title: Auth API
+        direction: <-->
+    technologies:             # Технологии используемые в компоненте
+      - HTTP
+      - OAuth
+
+  confmeet.backend:
+    title: Бэкенд
+    entity: component
+    links:
+      - id: confmeet.paygate
+        direction: <-->
+    aspects:
+      - conference.complete
+      - conference.exec
+      - conference.prep
+    technologies:
+      - Java
+
+  confmeet.auth:
+    title: Авторизация
+    entity: component
+    aspects:
+      - auth
+    technologies:
+      - Java
+      - OAuth
+
+  confmeet.paygate:
+    title: Платежный шлюз
+    entity: component
+    links:
+      - id: bank
+        direction: <-->
+    technologies:
+      - Java
+
+
+  # Детальная архитектура бэкенда (L3 C4Model)
+  confmeet.backend.core:
+    title: Ядро
+    entity: component
+
+  confmeet.backend.log:
+    title: Подсистема логирования
+    entity: component
+
+  confmeet.backend.db:
+    title: Хранилище
+    entity: database
+    technologies:
+      - PostgreSQL

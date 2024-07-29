@@ -1,21 +1,24 @@
 docs:
-  scrapsystem.scraporder.uc1:
+  confmeet.uc1:
     type: markdown
     location: Создание заказа
     source: docs\uc1.md
-  scrapsystem.scraporder.uc2:
+    title: Создание заказа
+
+  confmeet.uc2:
     type: markdown
     location: Получение информации об изменении в заказах
     source: uc2.md
-  scrapsystem.scraporder.uc3:
+  confmeet.uc3:
     type: markdown
-    location: Колобок/Песня для волка
+    location: UC3
     source: uc3.md
-  scrapsystem.scraporder.uc4:
+  confmeet.uc4:
     type: markdown
-    location: Колобок/Песня для медведя
+    location: UC4
     source: uc4.md
-  scrapsystem.scraporder.uc4:
+
+  confmeet.uc5:
     type: markdown
-    location: Колобок/Песня для лисы
+    location: UC5
     source: uc5.md

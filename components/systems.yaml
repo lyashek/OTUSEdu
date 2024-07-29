@@ -1,8 +1,16 @@
+imports:
+  - platform.yaml
+  - confmeet.yaml
+
 components:
   platform:
-    title: platform
-    entity: system
+    title: Технологическая платформа
+    entity: collections
 
-  scrapsystem:
-    title: scrapsystem
-    entity: system
+  confmeet:
+    title: Система проведения конференций
+    entity: collections
+
+  bank:
+    title: Банковская система
+    entity: collections

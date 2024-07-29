@@ -1,0 +1,14 @@
+components:
+  platform.kafka:
+    title: Kafka
+    entity: component
+
+  platform.elk:
+    title: ELK
+    entity: component
+
+  platform.keycloak:
+    title: Аутентификация и авторизация
+    entity: component
+
+

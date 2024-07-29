@@ -1,4 +1,3 @@
+# Архитектурные компоненты. Из них строится ИТ архитектура.
 imports:
-  - components.yaml
   - systems.yaml
-  - boundaries.yaml

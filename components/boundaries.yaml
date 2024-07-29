@@ -1,8 +1,0 @@
-components:
-  scrapsystem.scraporder:
-    title: scraporder
-    entity: boundary
-
-  scrapsystem.scrapstorage:
-    title: scraporder
-    entity: boundary

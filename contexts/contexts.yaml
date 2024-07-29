@@ -1,12 +1,4 @@
 contexts:
-  solution-architecture:
-    title: Архитектура 'Заказ лома'
-    location: Архитектура 'Заказ лома'
-    extra-links: true
-    components:
-      - scrapsystem
-      - scrapsystem.*
-      - scrapsystem.*.*
 
   platform:
     title: Технологическая платформа
@@ -16,3 +8,26 @@ contexts:
       - platform
       - platform.*
       - platform.*.*
+
+  overview:                   # Схема верхнего уровня представления (L1 C4Model)
+    title: Обзор              # Название диаграммы
+    location: Обзор          # Размещение диаграммы в меню
+    components:               # Компоненты, которые входят в диаграмму
+      - confmeet              # В данной диаграмме будет только один компонент
+      - admin
+      - customer
+      - manager
+      - speaker
+      - bank
+
+  system:                     # Архитектура системы (L2 C4Model)
+    title: Устройство системы
+    location: Система
+    components:
+      - confmeet.*              # Можно указать wildcard включаемых компонентов в диаграмму
+
+  system.backend:             # Архитектура бэкенда (L3 C4Model)
+    title: Устройство бэкенда
+    location: Система/Бэкенд
+    components:
+      - confmeet.backend.*

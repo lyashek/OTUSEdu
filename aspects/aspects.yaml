@@ -1,11 +1,25 @@
-aspects: # Архитектурные аспекты
-  scraporder:
-    title: Заказ лома      # Название аспекта
-    location: Заказ лома    # Размещение аспекта в навигационном дереве
-    default-context: solution-architecture    # Значения контекста по-умолчанию (Необязательный)
-  scrapstorage:
-    title: Запасы лома      # Название аспекта
-    location: Запасы лома    # Размещение аспекта в навигационном дереве
-    default-context: solution-architecture    # Значения контекста по-умолчанию (Необязательный)
+aspects:
+  mon:                       # Идентификатор аспекта
+    title: Мониторинг системы         # Название
+    location: Платформа     # Размещение в меню
+
+  log:                       # Идентификатор аспекта
+    title: Логирование         # Название
+    location: Плаформа     # Размещение в меню
+
+  conference:
+    title: Конференция
+    location: Конференция
+
+  conference.prep:
+    title: Конференция подготовка
+    location: Конференция/Подготовка
+
+  conference.exec:
+    title: Конференция проведение
+    location: Конференция/Проведение
 
 
+  conference.complete:
+    title: Конференция завершение
+    location: Конференция/Завершение
