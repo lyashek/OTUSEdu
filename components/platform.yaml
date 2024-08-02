@@ -3,12 +3,20 @@ components:
     title: Kafka
     entity: component
 
-  platform.elk:
-    title: ELK
+  platform.search:
+    title: OpenSearch
     entity: component
+    links:
+      - id: platform.kafka
+        direction: <--
+        title: Сбор логов
 
   platform.keycloak:
-    title: Аутентификация и авторизация
+    title: KeyCloak
     entity: component
+    technologies:
+      - OAuth
+      - REST
+
 
 

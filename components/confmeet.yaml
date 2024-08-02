@@ -1,40 +1,53 @@
 # Внутренняя архитектура компонентов верхнего уровня (L2 C4Model)
 components:
   confmeet.gateway:             # Иерархия компонентов определяется структурой их идентификаторов
-    title: API шлюз
+    title: API-шлюз
     entity: component
     links:
-      - id: confmeet.backend
+      - id: confmeet.confservice
         title: Бизнес API
         direction: <-->
-      - id: confmeet.auth
+      - id: platform.keycloak
         title: Auth API
         direction: <-->
     technologies:             # Технологии используемые в компоненте
-      - HTTP
+      - HTTPS
       - OAuth
+      - Java
 
-  confmeet.backend:
-    title: Бэкенд
+  confmeet.frontend:
+    title: Фронт-сервис
     entity: component
     links:
+      - id: confmeet.gateway
+        direction: <-->
+        title: API
+    technologies:
+      - VueJS
+      - HTTPS
+
+  confmeet.confservice:
+    title: Бизнес-логика организации конференций
+    entity: component
+    links:
+      - id: confmeet.confservicedb
+        direction: <-->
+        title: Хранение данных
       - id: confmeet.paygate
         direction: <-->
-    aspects:
-      - conference.complete
-      - conference.exec
-      - conference.prep
+        title: Банковские операции
+      - id: platform.kafka
+        direction: <-->
+        title: Сообщения
     technologies:
       - Java
+      - HTTP
 
-  confmeet.auth:
-    title: Авторизация
-    entity: component
-    aspects:
-      - auth
+  confmeet.confservicedb:
+    title: Хранилище
+    entity: database
     technologies:
-      - Java
-      - OAuth
+      - PostgreSQL
 
   confmeet.paygate:
     title: Платежный шлюз
@@ -42,21 +55,33 @@ components:
     links:
       - id: bank
         direction: <-->
+        title: Банковские операции
+      - id: platform.kafka
+        direction: <-->
+        title: Сообщения
     technologies:
       - Java
 
 
   # Детальная архитектура бэкенда (L3 C4Model)
-  confmeet.backend.core:
+  confmeet.confservice.core:
     title: Ядро
     entity: component
 
-  confmeet.backend.log:
-    title: Подсистема логирования
+  confmeet.profile:
+    title: Личный кабинет пользователя
     entity: component
+    links:
+      - id: confmeet.confservice
+        direction: <-->
+        title: Хранение данных
 
-  confmeet.backend.db:
-    title: Хранилище
-    entity: database
+      - id: confmeet.paygate
+        direction: <-->
+        title: Банковские операции
+      - id: platform.kafka
+        direction: <-->
+        title: Сообщения
     technologies:
-      - PostgreSQL
+      - Java
+      - HTTP

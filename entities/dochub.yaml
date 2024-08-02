@@ -24,8 +24,8 @@
 #    type: openapi               # Тип документа (OpenApi | Markdown | PlantUML | Table)
 #
 ## Описание технологического стека
-#technologies:
-#  sections:                           # Определение разделов стека
+technologies:
+  sections:                           # Определение разделов стека
 #    languages:                         # Идентификатор раздела
 #      title: Языки программирования   # Название раздела
 #    frameworks:
@@ -44,16 +44,6 @@
 #      link: https://www.php.net/                  # Ссылка на документацию
 #      section: languages              # Идентификатор секции технологии
 #      status: adopt                   # Статус технологии adopt / trial / assess / hold
-#    Go:
-#      title: Go
-#      link: https://go.dev/
-#      section: languages
-#      status: trial
-#    Laravel:
-#      title: Laravel
-#      link: https://laravel.ru/
-#      section: frameworks
-#      status: trial
 #    PostgreSQL:
 #      title: PostgreSQL
 #      link: https://www.postgresql.org/

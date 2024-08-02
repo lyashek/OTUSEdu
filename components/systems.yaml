@@ -10,6 +10,14 @@ components:
   confmeet:
     title: Система проведения конференций
     entity: collections
+    links:
+      - id: platform
+        title: Инфраструктурные услуги
+        direction: -->
+      - id: bank
+        title: Банковские услуги
+        direction: -->
+
 
   bank:
     title: Банковская система

@@ -1,17 +1,8 @@
 contexts:
 
-  platform:
-    title: Технологическая платформа
-    location: Технологическая платформа
-    extra-links: true
-    components:
-      - platform
-      - platform.*
-      - platform.*.*
-
-  overview:                   # Схема верхнего уровня представления (L1 C4Model)
-    title: Обзор              # Название диаграммы
-    location: Обзор          # Размещение диаграммы в меню
+  c4.l1:                   # Схема верхнего уровня представления (L1 C4Model)
+    title: С4 L1              # Название диаграммы
+    location: C4 Model/L1         # Размещение диаграммы в меню
     components:               # Компоненты, которые входят в диаграмму
       - confmeet              # В данной диаграмме будет только один компонент
       - admin
@@ -19,15 +10,18 @@ contexts:
       - manager
       - speaker
       - bank
+      - platform
 
-  system:                     # Архитектура системы (L2 C4Model)
-    title: Устройство системы
-    location: Система
+  c4.l2:                     # Архитектура системы (L2 C4Model)
+    title: L2
+    location: C4 Model/L2
+    extra-links: false
     components:
       - confmeet.*              # Можно указать wildcard включаемых компонентов в диаграмму
+      - platform.*
 
-  system.backend:             # Архитектура бэкенда (L3 C4Model)
-    title: Устройство бэкенда
-    location: Система/Бэкенд
+  c4.l3:             # Архитектура бэкенда (L3 C4Model)
+    title: L3
+    location: C4 Model/L3
     components:
-      - confmeet.backend.*
+      - confmeet.*.*
