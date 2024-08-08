@@ -4,7 +4,7 @@ components:
     title: API-шлюз
     entity: component
     links:
-      - id: confmeet.confservice
+      - id: confmeet.manager
         title: Бизнес API
         direction: <-->
       - id: platform.keycloak
@@ -15,7 +15,7 @@ components:
       - OAuth
       - Java
 
-  confmeet.frontend:
+  confmeet.managerfront:
     title: Фронт-сервис
     entity: component
     links:
@@ -24,15 +24,33 @@ components:
         title: API
     technologies:
       - VueJS
-      - HTTPS
 
-  confmeet.confservice:
+  confmeet.manager:
     title: Бизнес-логика организации конференций
     entity: component
     links:
-      - id: confmeet.confservicedb
+      - id: confmeet.managerdb
         direction: <-->
         title: Хранение данных
+      - id: confmeet.balance
+        direction: <-->
+        title: Банковские операции
+      - id: platform.kafka
+        direction: <-->
+        title: Сообщения
+    technologies:
+      - Java
+
+  confmeet.managerdb:
+    title: Хранилище
+    entity: database
+    technologies:
+      - PostgreSQL
+
+  confmeet.balance:
+    title: Баланс конференции
+    entity: component
+    links:
       - id: confmeet.paygate
         direction: <-->
         title: Банковские операции
@@ -41,13 +59,6 @@ components:
         title: Сообщения
     technologies:
       - Java
-      - HTTP
-
-  confmeet.confservicedb:
-    title: Хранилище
-    entity: database
-    technologies:
-      - PostgreSQL
 
   confmeet.paygate:
     title: Платежный шлюз
@@ -72,11 +83,10 @@ components:
     title: Личный кабинет пользователя
     entity: component
     links:
-      - id: confmeet.confservice
+      - id: confmeet.manager
         direction: <-->
         title: Хранение данных
-
-      - id: confmeet.paygate
+      - id: confmeet.balance
         direction: <-->
         title: Банковские операции
       - id: platform.kafka

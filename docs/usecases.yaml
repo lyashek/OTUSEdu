@@ -1,25 +1,68 @@
 docs:
+  confmeet.bc:
+    type: markdown
+    location: Бизнес-контекст
+    source: bc.md
+
+
+
   confmeet.uc1:
     type: markdown
-    location: Создание заказа
-    source: docs\uc1.md
-    title: Создание заказа
+    location: Критические сценарии/UС-1 Создание конференции
+    source: uc/uc1.md
+    subjects:
+      - confmeet
+      - manager
+      - confmeet.confservice
 
-  confmeet.uc2:
-    type: markdown
-    location: Получение информации об изменении в заказах
-    source: uc2.md
-
-  confmeet.uc3:
-    type: markdown
-    location: UC3
-    source: uc3.md
   confmeet.uc4:
     type: markdown
-    location: UC4
-    source: uc4.md
+    location: Критические сценарии/UС-4 Самостоятельная регистрация докладчика
+    source: uc/uc4.md
+    subjects:
+      - confmeet
+      - speaker
+      - confmeet.confservice
 
-  confmeet.uc5:
+  confmeet.uc7:
     type: markdown
-    location: UC5
-    source: uc5.md
+    location: Критические сценарии/UС-7 Проверка материалов
+    source: uc/uc7.md
+    subjects:
+      - confmeet
+      - manager
+      - confmeet.manager
+
+  confmeet.uc9:
+    type: markdown
+    location: Критические сценарии/UС-9 Формирование расписания
+    source: uc/uc9.md
+    subjects:
+      - confmeet
+      - manager
+      - confmeet.manager
+
+  confmeet.uc14:
+    type: markdown
+    location: Критические сценарии/UС-14 Регистрация на конференцию
+    source: uc/uc14.md
+    subjects:
+      - confmeet
+      - customer
+      - confmeet.profile
+
+  confmeet.uc19:
+    type: markdown
+    location: Критические сценарии/UС-19 Завершение конференции
+    source: uc/uc19.md
+    subjects:
+      - confmeet
+      - manager
+      - confmeet.manager
+
+  confmeet.uc:
+    type: markdown
+    location: Прочие сценарии
+    source: uc.md
+    subjects:
+      - confmeet

@@ -1,7 +1,7 @@
 contexts:
 
   c4.l1:                   # Схема верхнего уровня представления (L1 C4Model)
-    title: С4 L1              # Название диаграммы
+    title: L1               # Название диаграммы
     location: C4 Model/L1         # Размещение диаграммы в меню
     components:               # Компоненты, которые входят в диаграмму
       - confmeet              # В данной диаграмме будет только один компонент
@@ -12,16 +12,24 @@ contexts:
       - bank
       - platform
 
-  c4.l2:                     # Архитектура системы (L2 C4Model)
-    title: L2
-    location: C4 Model/L2
+  c4.l2.confmeet:                     # Архитектура системы (L2 C4Model)
+    title: L2 Система конференций
+    location: C4 Model/L2/Система конференций
     extra-links: false
     components:
       - confmeet.*              # Можно указать wildcard включаемых компонентов в диаграмму
+
+  c4.l2.platform:                     # Архитектура системы (L2 C4Model)
+    title: L2 Технологическая платформа
+    location: C4 Model/L2/Технологическая платформа
+    extra-links: false
+    components:
       - platform.*
 
+
   c4.l3:             # Архитектура бэкенда (L3 C4Model)
-    title: L3
+    title: L3 Система конференций
     location: C4 Model/L3
     components:
       - confmeet.*.*
+      - platform.*.*

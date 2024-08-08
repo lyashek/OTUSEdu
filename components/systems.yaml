@@ -17,8 +17,15 @@ components:
       - id: bank
         title: Банковские услуги
         direction: -->
+      - id: email
+        title: Рассылка писем
+        direction: -->
 
 
   bank:
     title: Банковская система
+    entity: collections
+
+  email:
+    title: Почтовая служба
     entity: collections

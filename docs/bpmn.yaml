@@ -1,0 +1,12 @@
+docs:
+  dochub.example.bpmn:
+      location: Критические сценарии  # Размещение документа в меню
+      type: bpmnjs                                                # Тип документа
+      source: bpmn.xml                                   # Файл с xml описанием диаграммы
+      subjects:
+        - confmeet.uc1
+        - confmeet.uc4
+        - confmeet.uc7
+        - confmeet.uc9
+        - confmeet.uc14
+        - confmeet.uc19
